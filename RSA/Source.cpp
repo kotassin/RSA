@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 long GCD(long a, long b) {
 		while (a && b)
 			if (a >= b)
@@ -30,6 +29,7 @@ void toCountExtendedEuclid(long a, long b, long *x, long *y, long *d){
 
 	*d = a, *x = x2, *y = y2;
 }
+
 long toCode(string message) {
 	long coded=1319;
 
@@ -70,6 +70,30 @@ long toDigital(char a) {
 	case ('z'): {return 26; }
 	default: {return 0; break;}
 	}
+
+
+long toEncrypt(long message, long e, long mod) {
+	long acc = 1, z = message % mod;
+	while (e) {
+		if (e & 1)
+			acc = (acc * z) % mod;
+		z = (z * z) % mod;
+		e >>= 1;
+	}
+	cout << " Message: " << acc;
+	return acc;
+}
+
+long toDecrypt(long message, long d, long mod) {
+	long acc = 1, z = message % mod;
+	while (d) {
+		if (d & 1)
+			acc = (acc * z) % mod;
+		z = (z * z) % mod;
+		d >>= 1;
+	}
+	cout << " Message: " << acc;
+	return acc;
 }
 
 int main() {
@@ -87,17 +111,17 @@ int main() {
 
 	do
 	{
-		cout << "Please, input e, mutual prime with phi(m): ";
+		cout << " Please, input e, mutual prime with phi(m): ";
 		cin >> e;
 	} while ((GCD(e, phi) != 1) || (e > phi));
 	
 	toCountExtendedEuclid(phi, e, &k, &d, &gcd);
 	if (d < 0) d += phi;
-	cout <<"Counted d = "<< d <<". Where e*d (mod phi(m)) = "<<(e*d)%phi;
+	cout <<" Counted d = "<< d <<". Where e*d (mod phi(m)) = "<<(e*d)%phi;
 
 	int todo;
-	cout << endl << endl << "Secret and open key are made. Let's make conversation!"<<endl;
-	cout << "Choose, what you wanna do: " << endl << "Input 1 - to encrypt" << endl << "Input 2 - to decrypt" << endl << endl << "To exit - input 0." << endl << "Your choice: ";
+	cout << endl << endl << " Secret and open key are made. Let's make conversation!"<<endl;
+	cout << " Choose, what you wanna do: " << endl << " Input 1 - to encrypt" << endl << " Input 2 - to decrypt" << endl << endl << " To exit - input 0." << endl << "Your choice: ";
 	cin >> todo;
 
 	while (todo != 0) {
