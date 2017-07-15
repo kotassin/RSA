@@ -2,7 +2,7 @@
 #include <string>
 
 using namespace std;
-
+//fgjdflgd
 
 long GCD(long a, long b) {
 		while (a && b)
