@@ -9,17 +9,20 @@
 using namespace std;
 
 int main() {
-	int p, q, m, f;
-	cout << " Please, input p and q: ";
-	cin >> p; cin >> q;
-  //Another breanch and im here
+	long p, q, m, phi;
+	cout << "Please, input p: ";
+	cin >> p;
+	cout << "Please, input q: "; 
+	cin >> q;
+  
 	m = p*q;
-	cout << " Module m = " << m << endl;
+	cout <<endl<< " Module m = " << m << endl;
 
-	f = (p - 1)*(q - 1);
-	cout << " F(m) = " << f << endl;
+	phi = (p - 1)*(q - 1);
+	cout << " Phi(m) = " << phi << endl;
 
-	cout << " Please, input Ea:"
+	cout << " Please, input e:";
+
 	system("pause");
 	return 0;
 }
